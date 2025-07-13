@@ -1,24 +1,29 @@
-// jest.config.js - Root Jest configuration file
+// jest.config.js — Unified Jest config for MERN Bug Tracker
 
 module.exports = {
-  // Base configuration for all tests
   projects: [
-    // Server-side tests configuration
     {
       displayName: 'server',
       testEnvironment: 'node',
       testMatch: ['<rootDir>/server/tests/**/*.test.js'],
-      moduleFileExtensions: ['js', 'json', 'node'],
+      moduleFileExtensions: ['js', 'json'],
       setupFilesAfterEnv: ['<rootDir>/server/tests/setup.js'],
       coverageDirectory: '<rootDir>/coverage/server',
       collectCoverageFrom: [
         'server/src/**/*.js',
         '!server/src/config/**',
+        '!**/__tests__/**',
         '!**/node_modules/**',
       ],
+      coverageThreshold: {
+        global: {
+          statements: 80,
+          branches: 70,
+          functions: 80,
+          lines: 80,
+        },
+      },
     },
-    
-    // Client-side tests configuration
     {
       displayName: 'client',
       testEnvironment: 'jsdom',
@@ -36,22 +41,21 @@ module.exports = {
       collectCoverageFrom: [
         'client/src/**/*.{js,jsx}',
         '!client/src/index.js',
+        '!**/__tests__/**',
         '!**/node_modules/**',
       ],
+      coverageThreshold: {
+        global: {
+          statements: 80,
+          branches: 70,
+          functions: 80,
+          lines: 80,
+        },
+      },
     },
   ],
-  
-  // Global configuration
   verbose: true,
   collectCoverage: true,
   coverageReporters: ['text', 'lcov', 'clover', 'html'],
-  coverageThreshold: {
-    global: {
-      statements: 70,
-      branches: 60,
-      functions: 70,
-      lines: 70,
-    },
-  },
   testTimeout: 10000,
-}; 
+};

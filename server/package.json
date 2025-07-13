@@ -1,0 +1,23 @@
+{
+  "name": "mern-bug-tracker-server",
+  "version": "1.0.0",
+  "description": "Backend API for the MERN Bug Tracker application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --runInBand"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^9.2.2",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  }
+}
